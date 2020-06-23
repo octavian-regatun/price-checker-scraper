@@ -1,10 +1,10 @@
-# language: node_js
-# node:
-#   - 12.16.3
-# cache: npm
+language: node_js
+node:
+  - 12.16.3
+cache: npm
 
-# install:
-#   - npm ci
+install:
+  - npm ci
 
-# script: 
-#   - npm test
+script: 
+  - npm test
