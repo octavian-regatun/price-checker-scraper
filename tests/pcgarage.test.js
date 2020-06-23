@@ -22,6 +22,10 @@ describe('Tests PcGarage Extractor', () => {
     await page.setViewport({ width: 1920, height: 900 });
     await page.goto(`${URL}/${search}`);
 
+    await page.waitForSelector(
+      '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a'
+    );
+
     const name = await page.$eval(
       '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a',
       (element) => element.getAttribute('title')
