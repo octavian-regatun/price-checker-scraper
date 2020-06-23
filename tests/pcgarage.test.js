@@ -6,14 +6,14 @@ const PcGarage = require('../extractors/pcgarage');
 
 const options = {
   headless: process.env.HEADLESS === 'true',
-  slowMo: process.env.SLOWMO || 0
+  slowMo: process.env.SLOWMO || 0,
+  args: ['--no-sandbox']
 };
 
 const URL = 'https://www.pcgarage.ro/cauta';
 
 describe('Tests PcGarage Extractor', () => {
   test('it tests if the API extracts the name from the site', async () => {
-    console.log(options.headless);
     const search = 'rtx 2060 super';
 
     const browser = await puppeteer.launch(options);
