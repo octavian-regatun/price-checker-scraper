@@ -15,6 +15,10 @@ const options = {
 const URL = 'https://www.pcgarage.ro/cauta';
 
 describe('Tests PcGarage Extractor', () => {
+  beforeEach(() => {
+    jest.setTimeout(180000);
+  });
+
   test('it tests if the API extracts the name from the site', async (done) => {
     const search = 'rtx 2060 super';
 
