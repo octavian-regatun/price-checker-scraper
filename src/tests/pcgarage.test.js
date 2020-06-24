@@ -23,13 +23,23 @@ describe('Tests PcGarage Extractor', () => {
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
 
+    const client = await page.target().createCDPSession();
+
+    // Set throttling property
+    await client.send('Network.emulateNetworkConditions', {
+      offline: false,
+      downloadThroughput: (750 * 1024) / 8,
+      uploadThroughput: (250 * 1024) / 8,
+      latency: 100
+    });
+
     await page.setViewport({ width: 1920, height: 900 });
     await page.goto(`${URL}/${search}`);
 
-    await page.waitForSelector(
-      '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a',
-      { timeout: 0 }
-    );
+    // await page.waitForSelector(
+    //   '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a',
+    //   { timeout: 0 }
+    // );
 
     const name = await page.$eval(
       '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a',
