@@ -7,9 +7,7 @@ const PcGarage = require('../extractors/pcgarage');
 const options = {
   headless: process.env.HEADLESS === 'true',
   slowMo: process.env.SLOWMO || 0,
-  args: [
-    '--no-sandbox --disable-setuid-sandbox - google-chrome-stable — headless — disable-gpu — remote-debugging-port=9222 http://localhost &'
-  ]
+  args: ['--no-sandbox --disable-setuid-sandbox']
 };
 
 const URL = 'https://www.pcgarage.ro/cauta';
