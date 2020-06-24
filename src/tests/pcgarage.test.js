@@ -15,7 +15,7 @@ const options = {
 const URL = 'https://www.pcgarage.ro/cauta';
 
 describe('Tests PcGarage Extractor', () => {
-  test('it tests if the API extracts the name from the site', async () => {
+  test('it tests if the API extracts the name from the site', async (done) => {
     const search = 'rtx 2060 super';
 
     const browser = await puppeteer.launch(options);
@@ -38,5 +38,6 @@ describe('Tests PcGarage Extractor', () => {
     expect(PcGarageResponse.products[0].name).toBe(name);
 
     await browser.close();
-  }, 30000);
+    done();
+  }, 180000);
 });
