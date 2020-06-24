@@ -4,8 +4,13 @@
   "description": "price-checker-backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest"
+    "start:dev": "nodemon index.js",
+    "start:prod": "node index.js",
+    "test:prod": "npm run build && jest ./build/tests ",
+    "test:dev": "jest ./src/tests",
+    "build": "npm run clear && npm run babel-build",
+    "babel-build": "babel -d ./build ./src -s",
+    "clear": "rm -rf ./build && mkdir build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +23,11 @@
   },
   "homepage": "https://github.com/octavian-regatun/price-checker-backend#readme",
   "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.1.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",

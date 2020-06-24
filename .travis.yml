@@ -10,10 +10,6 @@ cache:
 sudo: required
 node_js:
   - "10.15.3"
-env:
-  global:
-    - HEADLESS=true
-# allow headful tests
 before_install:
   # Enable user namespace cloning
   - "sysctl kernel.unprivileged_userns_clone=1"
@@ -23,4 +19,4 @@ before_install:
 install:
   - npm i
 script:
-  - npm run test
+  - npm run test:prod
