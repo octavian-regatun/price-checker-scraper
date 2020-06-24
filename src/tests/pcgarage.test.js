@@ -14,7 +14,7 @@ const URL = 'https://www.pcgarage.ro/cauta';
 
 describe('Tests PcGarage Extractor', () => {
   beforeEach(() => {
-    jest.setTimeout(180000);
+    jest.setTimeout(120000);
   });
 
   test('it tests if the API extracts the name from the site', async (done) => {
@@ -36,11 +36,13 @@ describe('Tests PcGarage Extractor', () => {
       (element) => element.getAttribute('title')
     );
 
+    console.log(name);
+
     const PcGarageResponse = await PcGarage.request(search);
 
     expect(PcGarageResponse.products[0].name).toBe(name);
 
     await browser.close();
     done();
-  }, 180000);
+  }, 120000);
 });
