@@ -29,7 +29,8 @@ describe('Tests PcGarage Extractor', () => {
     await page.goto(`${URL}/${search}`);
 
     await page.waitForSelector(
-      '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a'
+      '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a',
+      { timeout: 0 }
     );
 
     const name = await page.$eval(
