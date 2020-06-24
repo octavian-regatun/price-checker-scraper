@@ -1,20 +1,11 @@
 language: node_js
 dist: xenial
-addons:
-  chrome: stable
-notifications:
-  email: false
 cache:
   directories:
     - node_modules
 sudo: required
 node_js:
-  - "12.16.3"
-services: xvfb
-before_install:
-  # Enable user namespace cloning
-  - export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-  - "sysctl kernel.unprivileged_userns_clone=1"
+  - "lts"
 install:
   - npm i
 script:
