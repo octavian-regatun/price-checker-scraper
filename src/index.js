@@ -1,13 +1,16 @@
 require('dotenv').config();
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const express = require('express');
-
-const app = express();
+const http = require('http');
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
+const app = express();
+
+const server = http.Server(app);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -19,6 +22,6 @@ app.get('/', (request, response) => {
 
 require('./routes/search')(app);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log('Server running');
 });
