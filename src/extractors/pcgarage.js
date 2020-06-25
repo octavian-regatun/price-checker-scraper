@@ -6,7 +6,23 @@ const fetch = require('node-fetch');
 class PcGarage {
   static URL = 'https://www.pcgarage.ro/cauta';
 
-  static findCheapestProduct = () => {};
+  static findCheapestProduct = (products) => {
+    let cheapestPrice = Number.MAX_SAFE_INTEGER;
+    let cheapestProduct;
+
+    for (const product of products) {
+      if (product.price < cheapestPrice) {
+        cheapestProduct = {
+          name: product.name,
+          price: product.price,
+          imgSrc: product.imgSrc
+        };
+
+        cheapestPrice = product.price;
+      }
+    }
+    return cheapestProduct;
+  };
 
   static #getProductData = ($products) => {
     const products = [];
@@ -46,29 +62,13 @@ class PcGarage {
         });
     } catch (error) {
       console.log(error);
-      return;
     }
 
     const $products = $('.product-box-container').get();
 
     const response = { products: this.#getProductData($products) };
 
-    let cheapestPrice = Number.MAX_SAFE_INTEGER;
-    let cheapestProduct;
-
-    for (const product of response.products) {
-      if (product.price < cheapestPrice) {
-        cheapestProduct = {
-          name: product.name,
-          price: product.price,
-          imgSrc: product.imgSrc
-        };
-
-        cheapestPrice = product.price;
-      }
-    }
-
-    response.cheapestProduct = cheapestProduct;
+    response.cheapestProduct = this.findCheapestProduct(response.products);
 
     return response;
   }
