@@ -1,18 +1,20 @@
 {
+  "ignorePatterns": ["build/*"],
   "env": {
     "commonjs": true,
     "es2020": true,
     "node": true,
     "mongo": true,
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
-  "plugins": ["prettier", "standard", "unicorn"],
+  "plugins": ["prettier", "unicorn", "jest"],
   "extends": [
-    "standard",
     "prettier/standard",
-    "eslint:recommended",
-    "prettier"
+    "prettier",
+    "airbnb-base",
+    "plugin:jest/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -30,6 +32,13 @@
     "no-console": "off",
     "no-unused-vars": "warn",
     "prefer-const": "warn",
+    "no-restricted-syntax": "off",
+    "newline-per-chained-call": "off",
+    "consistent-return": "off",
+    "comma-dangle": ["error", { "functions": "never" }],
+
+    "jest/expect-expect": "off",
+    "jest/valid-expect-in-promise": "off",
 
     "unicorn/better-regex": "error",
     "unicorn/catch-error-name": "error",
@@ -85,5 +94,8 @@
     "unicorn/prevent-abbreviations": "error",
     "unicorn/string-content": "off",
     "unicorn/throw-new-error": "error"
+  },
+  "globals": {
+    "page": "readonly"
   }
 }
