@@ -1,5 +1,7 @@
+const fs = require('fs');
+
 const cheerio = require('cheerio');
-const axios = require('axios');
+const fetch = require('node-fetch');
 
 class PcGarage {
   static URL = 'https://www.pcgarage.ro/cauta';
@@ -34,9 +36,14 @@ class PcGarage {
   static async request(search) {
     let $;
     try {
-      $ = await axios
-        .get(`${this.URL}/${search}`)
-        .then((response) => cheerio.load(response.data));
+      $ = await fetch(`${this.URL}/${search}`, { method: 'GET' })
+        .then((response) => response.text())
+        .then((body) => {
+          fs.writeFile('./debug/pcgarage.html', body, (error) => {
+            if (error) return console.log(error);
+          });
+          return cheerio.load(body);
+        });
     } catch (error) {
       console.log(error);
       return;
