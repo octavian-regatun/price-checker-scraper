@@ -10,12 +10,8 @@ const PcGarage = require('../extractors/pcgarage');
 const { URL } = PcGarage;
 
 describe('PcGarage extractor tests', () => {
-  afterEach(() => {
-    delay(10000);
-  });
-
   test('it tests if the API extracts the name from the site', async () => {
-    const search = 'telefon';
+    const search = 'calculator';
 
     let $;
     try {
@@ -30,7 +26,7 @@ describe('PcGarage extractor tests', () => {
       '#listing-right > div.grid-products.clearfix.product-list-container > div:nth-child(1) > div > div.pb-specs-container > div.pb-name > a'
     ).attr('title');
 
-    await delay(10000);
+    await delay(30000);
 
     const PcGarageResponse = await PcGarage.request(search);
 
