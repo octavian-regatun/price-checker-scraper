@@ -38,6 +38,7 @@
     "comma-dangle": ["error", { "functions": "never" }],
 
     "jest/expect-expect": "off",
+    "jest/valid-expect-in-promise": "off",
 
     "unicorn/better-regex": "error",
     "unicorn/catch-error-name": "error",

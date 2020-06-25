@@ -4,10 +4,10 @@
   "description": "price-checker-backend",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon index.js",
-    "start:prod": "node index.js",
-    "test:prod": "npm run build && jest ./build/tests ",
-    "test:dev": "jest ./src/tests",
+    "start:dev": "nodemon ./src/index.js",
+    "start:prod": "node ./src/index.js",
+    "test:prod": "npm run build && jest ./build/tests --env=node",
+    "test:dev": "jest ./src/tests --env=node",
     "build": "npm run clear && npm run babel-build",
     "babel-build": "babel -d ./build ./src -s",
     "clear": "rm -rf ./build && mkdir build"
@@ -26,7 +26,6 @@
     "@babel/cli": "^7.10.3",
     "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@bengo923/puppeteer-extra-plugin-stealth": "^1.0.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.1.0",
     "eslint": "^7.2.0",
@@ -39,19 +38,21 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-unicorn": "^20.1.0",
     "jest": "^26.0.1",
-    "jest-puppeteer": "^4.4.0",
     "nodemon": "^2.0.4",
-    "prettier": "^2.0.5",
-    "puppeteer": "^4.0.0",
-    "puppeteer-extra": "^3.1.9"
+    "prettier": "^2.0.5"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "cors": "^2.8.5",
+    "delay": "^4.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "puppeteer-extra-plugin-stealth": "^2.4.9"
+    "node-fetch": "^2.6.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!./build/*"
+    ]
   }
 }
