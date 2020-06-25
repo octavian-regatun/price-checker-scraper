@@ -54,12 +54,7 @@ class Emag {
     try {
       $ = await fetch(`${this.URL}/${search}`, { method: 'GET' })
         .then((response) => response.text())
-        .then((body) => {
-          fs.writeFile('./debug/emag.html', body, (error) => {
-            if (error) return console.log(error);
-          });
-          return cheerio.load(body);
-        });
+        .then((body) => cheerio.load(body));
     } catch (error) {
       console.log(error);
     }
