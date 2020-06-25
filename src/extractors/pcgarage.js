@@ -55,9 +55,7 @@ class PcGarage {
       $ = await fetch(`${this.URL}/${search}`, { method: 'GET' })
         .then((response) => response.text())
         .then((body) => {
-          fs.writeFile('./debug/pcgarage.html', body, (error) => {
-            if (error) return console.log(error);
-          });
+          console.log(body);
           return cheerio.load(body);
         });
     } catch (error) {
