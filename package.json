@@ -4,13 +4,7 @@
   "description": "price-checker-backend",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon ./src/index.js",
-    "start:prod": "node ./src/index.js",
-    "test:prod": "npm run build && jest ./build/tests --env=node",
-    "test:dev": "jest ./src/tests --env=node",
-    "build": "npm run clear && npm run babel-build",
-    "babel-build": "babel -d ./build ./src -s",
-    "clear": "rm -rf ./build && mkdir build"
+    "start:dev": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
