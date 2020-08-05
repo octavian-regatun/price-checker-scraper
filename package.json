@@ -35,6 +35,6 @@
     "http": "0.0.1-security",
     "mongoose": "^5.9.27",
     "node-fetch": "^2.6.0",
-    "price-checker-api": "^0.4.2"
+    "price-checker-api": "^0.4.3"
   }
 }
