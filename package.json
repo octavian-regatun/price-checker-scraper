@@ -4,13 +4,7 @@
   "description": "price-checker-backend",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon ./src/index.js",
-    "start:prod": "node ./src/index.js",
-    "test:prod": "npm run build && jest ./build/tests --env=node",
-    "test:dev": "jest ./src/tests --env=node",
-    "build": "npm run clear && npm run babel-build",
-    "babel-build": "babel -d ./build ./src -s",
-    "clear": "rm -rf ./build && mkdir build"
+    "start:dev": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,23 +17,13 @@
   },
   "homepage": "https://github.com/octavian-regatun/price-checker-backend#readme",
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.1.0",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jest": "^23.16.0",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint-config-xo": "^0.32.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-unicorn": "^20.1.0",
-    "jest": "^26.0.1",
     "nodemon": "^2.0.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "xo": "^0.32.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -48,11 +32,9 @@
     "delay": "^4.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "!./build/*"
-    ]
+    "http": "0.0.1-security",
+    "mongoose": "^5.9.20",
+    "node-fetch": "^2.6.0",
+    "price-checker-api": "^0.4.1"
   }
 }
