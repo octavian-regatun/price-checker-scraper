@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/octavian-regatun/price-checker-backend#readme",
   "devDependencies": {
-    "eslint": "^7.4.0",
+    "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-config-xo": "^0.32.0",
+    "eslint-config-xo": "^0.32.1",
     "eslint-plugin-prettier": "^3.1.4",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
@@ -29,12 +29,12 @@
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "cors": "^2.8.5",
-    "delay": "^4.3.0",
+    "delay": "^4.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http": "0.0.1-security",
-    "mongoose": "^5.9.20",
+    "mongoose": "^5.9.27",
     "node-fetch": "^2.6.0",
-    "price-checker-api": "^0.4.1"
+    "price-checker-api": "^0.4.3"
   }
 }

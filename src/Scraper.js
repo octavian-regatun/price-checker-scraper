@@ -4,12 +4,12 @@ const Product = require('./models/product');
 const provider = process.env.PROVIDER.toLowerCase();
 
 module.exports = {
-  async getResponse(action, search) {
+  async getResponse(action, param) {
     switch (action) {
       case 'addFirstPage':
         switch (provider) {
           case 'pcgarage':
-            return await API.PcGarage.requestFirstPage(search);
+            return await API.PcGarage.requestFirstPage(param);
 
           default:
             console.log('Please specify a PROVIDER in .env file');
@@ -20,7 +20,19 @@ module.exports = {
       case 'addAllPages':
         switch (provider) {
           case 'pcgarage':
-            return await API.PcGarage.requestAllPages(search);
+            return await API.PcGarage.requestAllPages(param);
+
+          default:
+            console.log('Please specify a PROVIDER in .env file');
+            break;
+        }
+
+        break;
+
+      case 'addByCategory':
+        switch (provider) {
+          case 'pcgarage':
+            return await API.PcGarage.requestByCategory(param);
 
           default:
             console.log('Please specify a PROVIDER in .env file');
@@ -66,6 +78,33 @@ module.exports = {
 
   async addAllPages(search) {
     const response = await this.getResponse('addAllPages', search);
+
+    for (const page of response.pages) {
+      for (const responseProduct of page.products) {
+        const product = new Product();
+
+        product.name = responseProduct.name;
+        product.price = responseProduct.price;
+        product.imgSrc = responseProduct.imgSrc;
+        product.url = responseProduct.url;
+
+        if (await this.isProductInDB(product)) {
+          console.log("Product already in database, didn't save it again");
+        } else {
+          product.save((error) => {
+            if (error) {
+              console.log(error);
+            }
+
+            console.log('Product saved successfully');
+          });
+        }
+      }
+    }
+  },
+
+  async addByCategory(category) {
+    const response = await this.getResponse('addByCategory', category);
 
     for (const page of response.pages) {
       for (const responseProduct of page.products) {
