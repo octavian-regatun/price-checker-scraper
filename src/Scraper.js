@@ -7,7 +7,7 @@ module.exports = {
   },
 
   async addFirstPage(search, provider) {
-    const response = API[provider].requestFirstPage(search);
+    const response = await API[provider].requestFirstPage(search);
 
     for (const responseProduct of response.products) {
       const product = new Product();
@@ -32,7 +32,7 @@ module.exports = {
   },
 
   async addAllPages(search, provider) {
-    const response = API[provider].requestAllPages(search);
+    const response = await API[provider].requestAllPages(search);
 
     for (const page of response.pages) {
       for (const responseProduct of page.products) {
@@ -59,7 +59,7 @@ module.exports = {
   },
 
   async addByCategory(category, provider) {
-    const response = API[provider].requestByCategory(category);
+    const response = await API[provider].requestByCategory(category);
 
     for (const page of response.pages) {
       for (const responseProduct of page.products) {
