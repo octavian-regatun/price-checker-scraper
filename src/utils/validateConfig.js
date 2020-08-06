@@ -57,7 +57,7 @@ log();
 
 function getConfig() {
   try {
-    const CONFIGDATA = fs.readFileSync('configTest.json');
+    const CONFIGDATA = fs.readFileSync('config.json');
     return JSON.parse(CONFIGDATA);
   } catch {
     errors.push(
