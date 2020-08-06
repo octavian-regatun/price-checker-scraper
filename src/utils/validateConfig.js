@@ -10,7 +10,7 @@ const errors = [];
 
 const CONFIGS = getConfig();
 
-const { AVAILABLE_ACTIONS, AVAILABLE_PROVIDERS } = require('../config');
+const { ACTIONS, PROVIDERS } = require('../config');
 
 let provider;
 let action;
@@ -41,7 +41,7 @@ for (const [index, CONFIG] of CONFIGS.entries()) {
     );
   }
 
-  if (action === 'addByCategory') {
+  if (action === ACTIONS.addByCategory) {
     if (!isCategoryValid(category)) {
       errors.push(
         CustomLog.error(
@@ -92,7 +92,7 @@ function isActionValid(configAction) {
     return false;
   }
 
-  for (const action of AVAILABLE_ACTIONS) {
+  for (const action of ACTIONS.array) {
     if (configAction === action) {
       return true;
     }
@@ -106,7 +106,7 @@ function isProviderValid(configProvider) {
     return false;
   }
 
-  for (const provider of AVAILABLE_PROVIDERS) {
+  for (const provider of PROVIDERS.array) {
     if (configProvider === provider) {
       return true;
     }
