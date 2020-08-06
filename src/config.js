@@ -1,4 +1,9 @@
 module.exports = {
-  AVAILABLE_ACTIONS: ['addFirstPage', 'addAllPages', 'addByCategory'],
-  AVAILABLE_PROVIDERS: ['PcGarage']
+  ACTIONS: {
+    addFirstPage: 'addFirstPage',
+    addAllPages: 'addAllPages',
+    addByCategory: 'addByCategory',
+    array: ['addFirstPage', 'addAllPages', 'addByCategory']
+  },
+  PROVIDERS: { PcGarage: 'PcGarage', array: ['PcGarage'] }
 };
