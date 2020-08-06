@@ -10,7 +10,7 @@
   "rules": {
     "no-await-in-loop": "off",
     "no-return-await": "off",
-    "no-unused-vars": "off",
+    "no-unused-vars": "warn",
     "guard-for-in": "off",
     "capitalized-comments":"off"
   }
