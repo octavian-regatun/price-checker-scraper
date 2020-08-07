@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "price-checker-backend",
   "main": "index.js",
+  "watch": {
+    "start": "*.js"
+  },
   "scripts": {
-    "start:dev": "nodemon ./src/index.js",
-    "start:gc": "npx @google-cloud/functions-framework --target=helloWorld"
+    "watch": "npm-watch start",
+    "start": "npx @google-cloud/functions-framework --target=main"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
     "eslint-config-xo": "^0.32.1",
     "eslint-plugin-prettier": "^3.1.4",
     "nodemon": "^2.0.4",
+    "npm-watch": "^0.6.0",
     "prettier": "^2.0.5",
     "xo": "^0.32.1"
   },
