@@ -1,30 +1,28 @@
 require('dotenv').config();
-
 require('./src/utils/connect');
 
-let Scraper = require('./src/Scraper');
+const CONFIGS = require('./src/utils/validateConfig');
 
-const provider = process.env.PROVIDER.toLowerCase();
+const Scraper = require('./src/scraper');
+const CustomLog = require('./src/utils/warning');
+const { ACTIONS } = require('./src/config');
+const delay = require('delay');
 
-const search = process.env.SEARCH;
-const category = process.env.CATEGORY;
+(async () => {
+  for (const [index, config] of CONFIGS.entries()) {
+    CustomLog.info(`Scraper is doing config ${index + 1}/${CONFIGS.length}`);
 
-if (provider === undefined) {
-  console.log('Please specify a PROVIDER in .env file');
-}
+    const provider = config.provider;
+    const action = config.action;
+    const search = config.search;
+    const category = config.category;
 
-const action = process.env.ACTION;
+    if (action === ACTIONS.addByCategory) {
+      await Scraper[action](category, provider);
+    } else {
+      await Scraper[action](search, provider);
+    }
 
-switch (action) {
-  case 'addFirstPage':
-    Scraper.addFirstPage(search);
-    break;
-  case 'addAllPages':
-    Scraper.addAllPages(search);
-    break;
-  case 'addByCategory':
-    Scraper.addByCategory(category);
-    break;
-  default:
-    console.log('Please specify a ACTION in .env file');
-}
+    await delay(2000);
+  }
+})();
