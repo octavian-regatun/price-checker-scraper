@@ -50,6 +50,43 @@ for (const [index, CONFIG] of CONFIGS.entries()) {
         )
       );
     }
+
+    if (search !== undefined) {
+      errors.push(
+        CustomLog.error(
+          `At ${getOrdinal(
+            index + 1
+          )} config there shouln't be a ${chalk.bold.underline(
+            'search'
+          )} defined!`,
+          false
+        )
+      );
+    }
+  } else {
+    if (category !== undefined) {
+      errors.push(
+        CustomLog.error(
+          `At ${getOrdinal(
+            index + 1
+          )} config there shouln't be a ${chalk.bold.underline(
+            'category'
+          )} defined!`,
+          false
+        )
+      );
+    }
+
+    if (search === undefined) {
+      errors.push(
+        CustomLog.error(
+          `At ${getOrdinal(index + 1)} config there ${chalk.bold.underline(
+            'search'
+          )} should be defined!`,
+          false
+        )
+      );
+    }
   }
 }
 
