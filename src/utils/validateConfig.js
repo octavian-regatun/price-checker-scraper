@@ -130,18 +130,6 @@ module.exports = (CONFIGS, res) => {
     return false;
   }
 
-  function logWarns() {
-    for (const warn of CustomLog.LOGS.warns) {
-      console.log(chalk.yellow(warn));
-    }
-  }
-
-  function logErrors() {
-    for (const error of CustomLog.LOGS.errors) {
-      console.log(chalk.red(error));
-    }
-  }
-
   function logVerdict() {
     if (
       CustomLog.LOGS.warns.length === 0 &&
@@ -159,12 +147,11 @@ module.exports = (CONFIGS, res) => {
 
   function log() {
     logVerdict();
-    logWarns();
-    logErrors();
 
     if (CustomLog.LOGS.errors.length > 0 || CustomLog.LOGS.warns.length > 0) {
       res.send(CustomLog.LOGS);
       CustomLog.clearLogs();
+      process.exit(1);
     }
   }
 };
