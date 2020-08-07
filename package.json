@@ -8,7 +8,7 @@
   },
   "scripts": {
     "watch": "npm-watch start",
-    "start": "npx @google-cloud/functions-framework --target=main"
+    "start": "npx @google-cloud/functions-framework --target=main --port 3000"
   },
   "repository": {
     "type": "git",
