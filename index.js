@@ -1,17 +1,21 @@
 require('dotenv').config();
 require('./src/utils/connect');
 
-exports.main = (req, res) => {
-  module.exports = { CONFIGS: req.body };
+const express = require('express');
 
-  const CONFIGS = require('./src/utils/validateConfig');
+const app = express();
 
-  const Scraper = require('./src/scraper');
-  const CustomLog = require('./src/utils/warning');
-  const { ACTIONS } = require('./src/config');
-  const delay = require('delay');
+const getDefault = (req, res) => {
+  const CONFIGS = req.body;
+  const CustomLog = require('./src/utils/CustomLog');
 
   (async () => {
+    const Scraper = require('./src/scraper');
+    const { ACTIONS } = require('./src/config');
+    const delay = require('delay');
+
+    require('./src/utils/validateConfig')(CONFIGS, res);
+
     for (const [index, config] of CONFIGS.entries()) {
       CustomLog.info(`Scraper is doing config ${index + 1}/${CONFIGS.length}`);
 
@@ -28,7 +32,13 @@ exports.main = (req, res) => {
 
       await delay(2000);
     }
-  })();
-
-  res.send('Hello, World');
+  })().then(() => {
+    CustomLog.successful('Scraper ran the configs!');
+    res.send(CustomLog.LOGS);
+    CustomLog.clearLogs();
+  });
 };
+
+app.use(getDefault);
+
+exports.main = app;
