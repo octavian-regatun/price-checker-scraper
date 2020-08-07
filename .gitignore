@@ -117,3 +117,6 @@ dist
 
 build/
 debug/
+config.json
+configTest.json
+todo.md

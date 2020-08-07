@@ -1,14 +1,17 @@
 {
-	"env": {
-		"browser": true,
-		"commonjs": true,
-		"es2020": true,
-		"node": true
-	},
-	"extends": ["xo", "plugin:prettier/recommended"],
-	"parser": "babel-eslint",
-	"rules": {
-		"no-await-in-loop": "off",
-		"no-return-await":"off"
-	}
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2020": true,
+    "node": true
+  },
+  "extends": ["xo", "plugin:prettier/recommended"],
+  "parser": "babel-eslint",
+  "rules": {
+    "no-await-in-loop": "off",
+    "no-return-await": "off",
+    "no-unused-vars": "warn",
+    "guard-for-in": "off",
+    "capitalized-comments":"off"
+  }
 }
