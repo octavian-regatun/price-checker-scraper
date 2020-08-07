@@ -8,7 +8,7 @@ const chalk = require('chalk');
 const warns = [];
 const errors = [];
 
-const CONFIGS = getConfig();
+const { CONFIGS } = require('../../index');
 
 const { ACTIONS, PROVIDERS } = require('../config');
 
@@ -91,22 +91,6 @@ for (const [index, CONFIG] of CONFIGS.entries()) {
 }
 
 log();
-
-function getConfig() {
-  try {
-    const CONFIGDATA = fs.readFileSync('config.json');
-    return JSON.parse(CONFIGDATA);
-  } catch {
-    errors.push(
-      CustomLog.error(
-        'Config file was not found! Please add one with the name "config.json" in the root folder following the template in the documentation.',
-        false
-      )
-    );
-
-    log();
-  }
-}
 
 function getOrdinal(number) {
   switch (number) {
