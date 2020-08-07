@@ -1,5 +1,6 @@
 const API = require('price-checker-api');
 const Product = require('./models/product');
+const CustomLog = require('./utils/CustomLog');
 
 module.exports = {
   async isProductInDB(product) {
@@ -18,14 +19,14 @@ module.exports = {
       product.url = responseProduct.url;
 
       if (await this.isProductInDB(product)) {
-        console.log("Product already in database, didn't save it again");
+        CustomLog.info("Product already in database, didn't save it again!");
       } else {
         product.save((error) => {
           if (error) {
             console.log(error);
           }
 
-          console.log('Product saved successfully');
+          CustomLog.succes('Product saved successfully.');
         });
       }
     }
@@ -44,14 +45,14 @@ module.exports = {
         product.url = responseProduct.url;
 
         if (await this.isProductInDB(product)) {
-          console.log("Product already in database, didn't save it again");
+          CustomLog.info("Product already in database, didn't save it again.");
         } else {
           product.save((error) => {
             if (error) {
               console.log(error);
             }
 
-            console.log('Product saved successfully');
+            CustomLog.succes('Product saved successfully!');
           });
         }
       }
@@ -71,14 +72,14 @@ module.exports = {
         product.url = responseProduct.url;
 
         if (await this.isProductInDB(product)) {
-          console.log("Product already in database, didn't save it again");
+          CustomLog.info("Product already in database, didn't save it again.");
         } else {
           product.save((error) => {
             if (error) {
               console.log(error);
             }
 
-            console.log('Product saved successfully');
+            CustomLog.succes('Product saved successfully!');
           });
         }
       }
