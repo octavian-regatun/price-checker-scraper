@@ -5,5 +5,5 @@ module.exports = {
     addByCategory: 'addByCategory',
     array: ['addFirstPage', 'addAllPages', 'addByCategory']
   },
-  unnecessary  PROVIDERS: { PcGarage: 'PcGarage', array: ['PcGarage'] }
+  PROVIDERS: { PcGarage: 'PcGarage', array: ['PcGarage'] }
 };
