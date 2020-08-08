@@ -41,6 +41,7 @@
     "moment": "^2.27.0",
     "mongoose": "^5.9.27",
     "node-fetch": "^2.6.0",
-    "price-checker-api": "^0.4.3"
+    "price-checker-api": "^0.4.3",
+    "store": "^2.0.12"
   }
 }
