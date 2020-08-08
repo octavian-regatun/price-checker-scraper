@@ -1,4 +1,8 @@
 module.exports = (CONFIGS, res) => {
+  const store = require('store');
+
+  store.set('isConfigValid', true);
+
   const CustomLog = require('./CustomLog');
 
   CustomLog.info('Config validation process started.');
@@ -150,6 +154,7 @@ module.exports = (CONFIGS, res) => {
 
     if (CustomLog.LOGS.errors.length > 0 || CustomLog.LOGS.warns.length > 0) {
       res.send(CustomLog.LOGS);
+      store.set('isConfigValid', false);
     }
   }
 };
