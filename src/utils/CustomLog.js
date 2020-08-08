@@ -12,7 +12,7 @@ class CustomLog {
 
   static info(message, shouldAddToLogs = true, shouldLog = true) {
     const log = `(INFO - ${moment().format(
-      'HH:mm:ss'
+      'HH:mm:ss:SSS'
     )}) price-checker-scraper: ${message}`;
     if (shouldLog) {
       console.log(chalk.blueBright(log));
@@ -27,7 +27,7 @@ class CustomLog {
 
   static warn(message, shouldAddToLogs = true, shouldLog = true) {
     const log = `(WARNING - ${moment().format(
-      'HH:mm:ss'
+      'HH:mm:ss:SSS'
     )}) price-checker-scraper: ${message}`;
     if (shouldLog) {
       console.log(chalk.yellow(log));
@@ -42,7 +42,7 @@ class CustomLog {
 
   static error(message, shouldAddToLogs = true, shouldLog = true) {
     const log = `(ERROR - ${moment().format(
-      'HH:mm:ss'
+      'HH:mm:ss:SSS'
     )}) price-checker-scraper: ${message}`;
     if (shouldLog) {
       console.log(chalk.red(log));
@@ -57,7 +57,7 @@ class CustomLog {
 
   static successful(message, shouldAddToLogs = true, shouldLog = true) {
     const log = `(SUCCESSFUL - ${moment().format(
-      'HH:mm:ss'
+      'HH:mm:ss:SSS'
     )}) price-checker-scraper: ${message}`;
     if (shouldLog) {
       console.log(chalk.greenBright(log));
@@ -72,7 +72,7 @@ class CustomLog {
 
   static unsuccessful(message, shouldAddToLogs = true, shouldLog = true) {
     const log = `(UNSUCCESSFUL - ${moment().format(
-      'HH:mm:ss'
+      'HH:mm:ss:SSS'
     )}) price-checker-scraper: ${message}`;
     if (shouldLog) {
       console.log(chalk.rgb(200, 0, 0)(log));
