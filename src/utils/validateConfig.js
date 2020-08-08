@@ -150,8 +150,6 @@ module.exports = (CONFIGS, res) => {
 
     if (CustomLog.LOGS.errors.length > 0 || CustomLog.LOGS.warns.length > 0) {
       res.send(CustomLog.LOGS);
-      CustomLog.clearLogs();
-      process.exit(1);
     }
   }
 };
